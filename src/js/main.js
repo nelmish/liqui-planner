@@ -121,31 +121,33 @@ const haushaltsbuch = {
     //     });
     // },
 
-//     <ul>
-//     <li class="ausgabe">
-//         <span class="datum">03.02.2020</span>
-//         <span class="titel">Miete</span>
-//         <span class="betrag">545,00 €</span>
-//         <button class="entfernen-button"><i class="fas fa-trash"></i></button>
-//     </li>
-//     <li class="einnahme">
-//         <span class="datum">01.02.2020</span>
-//         <span class="titel">Gehalt</span>
-//         <span class="betrag">2064,37 €</span>
-//         <button class="entfernen-button"><i class="fas fa-trash"></i></button>
-//     </li>
-// </ul>
+    //     <ul>
+    //     <li class="ausgabe">
+    //         <span class="datum">03.02.2020</span>
+    //         <span class="titel">Miete</span>
+    //         <span class="betrag">545,00 €</span>
+    //         <button class="entfernen-button"><i class="fas fa-trash"></i></button>
+    //     </li>
+    //     <li class="einnahme">
+    //         <span class="datum">01.02.2020</span>
+    //         <span class="titel">Gehalt</span>
+    //         <span class="betrag">2064,37 €</span>
+    //         <button class="entfernen-button"><i class="fas fa-trash"></i></button>
+    //     </li>
+    // </ul>
 
     eintraege_anzeigen() {
 
-        // überprüfen, ob eine eine <ul> bereits vorhanden ist
-            // ggf. <ul> entfernen
+        document.querySelectorAll(".monatsliste ul").forEach(function (eintragsliste) {
+            eintragsliste.remove();
+        });
 
-        // <ul> erstellen
-        // über eintrage[] itterieren
-            // für jeden Eintrag einen HTML-Eintrag erstellen
-            // HTML-Eintrag in <ul> einsetzen
-        // <ul> in den article.monatsliste einsetzen
+        let eintragsliste = document.createElement("ul");
+        for (let eintrag of this.eintraege) {
+            eintragsliste.insertAdjacentElement("beforeend", this.html_eintrag_generieren(eintrag));
+        };
+        document.querySelector(".monatsliste").insertAdjacentElement("afterbegin", eintragsliste);
+
     },
 
 
