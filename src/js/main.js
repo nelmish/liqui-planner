@@ -106,20 +106,48 @@ const haushaltsbuch = {
 
     },
 
-    eintraege_ausgeben() {
-        console.clear();
-        this.eintraege.forEach(function (eintrag) {
-            console.log(`Titel: ${eintrag.get("titel")}\n`
-                + `Typ: ${eintrag.get("typ")}\n`
-                + `Betrag: ${(eintrag.get("betrag") / 100).toFixed(2)} €\n`
-                + `Datum: ${eintrag.get("datum").toLocaleDateString("de-DE", {
-                    year: "numeric",
-                    month: "2-digit",
-                    day: "2-digit"
-                })}`
-            );
-        });
+    // eintraege_ausgeben() {
+    //     console.clear();
+    //     this.eintraege.forEach(function (eintrag) {
+    //         console.log(`Titel: ${eintrag.get("titel")}\n`
+    //             + `Typ: ${eintrag.get("typ")}\n`
+    //             + `Betrag: ${(eintrag.get("betrag") / 100).toFixed(2)} €\n`
+    //             + `Datum: ${eintrag.get("datum").toLocaleDateString("de-DE", {
+    //                 year: "numeric",
+    //                 month: "2-digit",
+    //                 day: "2-digit"
+    //             })}`
+    //         );
+    //     });
+    // },
+
+//     <ul>
+//     <li class="ausgabe">
+//         <span class="datum">03.02.2020</span>
+//         <span class="titel">Miete</span>
+//         <span class="betrag">545,00 €</span>
+//         <button class="entfernen-button"><i class="fas fa-trash"></i></button>
+//     </li>
+//     <li class="einnahme">
+//         <span class="datum">01.02.2020</span>
+//         <span class="titel">Gehalt</span>
+//         <span class="betrag">2064,37 €</span>
+//         <button class="entfernen-button"><i class="fas fa-trash"></i></button>
+//     </li>
+// </ul>
+
+    eintraege_anzeigen() {
+
+        // überprüfen, ob eine eine <ul> bereits vorhanden ist
+            // ggf. <ul> entfernen
+
+        // <ul> erstellen
+        // über eintrage[] itterieren
+            // für jeden Eintrag einen HTML-Eintrag erstellen
+            // HTML-Eintrag in <ul> einsetzen
+        // <ul> in den article.monatsliste einsetzen
     },
+
 
     gesamtbilanz_erstellen() {
         let neue_gesamtbilanz = new Map();
@@ -160,7 +188,7 @@ const haushaltsbuch = {
             this.eintrag_erfassen();
             if (this.fehler.length === 0) {
                 this.eintraege_sortieren();
-                this.eintraege_ausgeben();
+                this.eintraege_anzeigen();
                 this.gesamtbilanz_erstellen();
                 this.gesamtbilanz_ausgeben();
             } else {
