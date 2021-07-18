@@ -216,14 +216,39 @@ const haushaltsbuch = {
         this.gesamtbilanz = neue_gesamtbilanz;
     },
 
-    gesamtbilanz_ausgeben() {
-        console.log(`Einnahmen: ${(this.gesamtbilanz.get("einnahmen") / 100).toFixed(2)} €\n`
-            + `Ausgaben: ${(this.gesamtbilanz.get("ausgaben") / 100).toFixed(2)} €\n`
-            + `bilanz: ${(this.gesamtbilanz.get("bilanz") / 100).toFixed(2)} €\n`
-            + `Bilanz ist positiv: ${(this.gesamtbilanz.get("bilanz") / 100) >= 0}`
-        );
+    // gesamtbilanz_ausgeben() {
+    //     console.log(`Einnahmen: ${(this.gesamtbilanz.get("einnahmen") / 100).toFixed(2)} €\n`
+    //         + `Ausgaben: ${(this.gesamtbilanz.get("ausgaben") / 100).toFixed(2)} €\n`
+    //         + `bilanz: ${(this.gesamtbilanz.get("bilanz") / 100).toFixed(2)} €\n`
+    //         + `Bilanz ist positiv: ${(this.gesamtbilanz.get("bilanz") / 100) >= 0}`
+    //     );
+
+    // },
+
+//     <aside id="gesamtbilanz">
+//     <h1>Gesamtbilanz</h1>
+//     <div class="gesamtbilanz-zeile einnahmen"><span>Einnahmen:</span><span>0,00€</span></div>
+//     <div class="gesamtbilanz-zeile ausgaben"><span>Ausgaben:</span><span>0,00€</span></div>
+//     <div class="gesamtbilanz-zeile bilanz"><span>Bilanz:</span><span class="positiv">0,00€</span></div>
+// </aside>
+
+    gesamtbilanz_anzeigen() {
+        
+        document.querySelectorAll("#gesamtbilanz").forEach(function(gesamtbilanz){
+            gesamtbilanz.remove();
+        });
+
+        document.querySelector("body").insertAdjacentElement("beforeend", this.html_gesamtbilanz_generieren());
 
     },
+    
+
+
+
+    // gesamtbilanz_anzeigen()
+        // prüfen, ob bereits Gesamtbilanz angezeig wird...
+
+
 
     eintrag_hinzufuegen() {
 
@@ -234,7 +259,7 @@ const haushaltsbuch = {
                 this.eintraege_sortieren();
                 this.eintraege_anzeigen();
                 this.gesamtbilanz_erstellen();
-                this.gesamtbilanz_ausgeben();
+                this.gesamtbilanz_anzeigen();
             } else {
                 this.fehler = [];
             }
