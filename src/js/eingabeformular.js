@@ -13,16 +13,9 @@ const eingabeformular = {
     },
 
     formulardaten_verarbeiten(formulardaten) {
-        let typ;
-        if (formulardaten.einnahme === true) {
-            typ = "einnahme";
-        } else if (formulardaten.ausgabe === true) {
-            typ = "ausgabe";
-        }
-
         return {
             titel: formulardaten.titel.trim(),
-            typ: typ,
+            typ: formulardaten.einnahme === true ? "einnahme" : formulardaten.ausgabe ? "ausgabe" : null,
             betrag: parseFloat(formulardaten.betrag) * 100,
             datum: formulardaten.datum
         }
@@ -44,6 +37,14 @@ const eingabeformular = {
             fehler.push("Datum");
         }
         return fehler;
+
+    },
+
+    datum_aktualisieren() {
+        let datum_input = document.querySelector("#datum");
+        if (datum_input !== null) {
+            datum_input.valueAsDate = new Date();
+        }
 
     },
 
@@ -83,14 +84,6 @@ const eingabeformular = {
         fehlerbox.insertAdjacentElement("beforeend", fehlerliste);
 
         return fehlerbox;
-    },
-
-    datum_aktualisieren() {
-        let datum_input = document.querySelector("#datum");
-        if (datum_input !== null) {
-            datum_input.valueAsDate = new Date();
-        }
-
     },
 
     fehlerbox_anzeigen(formular_fehler) {
@@ -145,8 +138,12 @@ const eingabeformular = {
     },
 
     anzeigen() {
-        document.querySelector("#navigationsleiste").insertAdjacentElement("afterend", this.html_generieren());
-        this.datum_aktualisieren();
+        let navigationsleise = document.querySelector("#navigationsleiste");
+        if (navigatsionsleiste !== null) {
+            navigationsleise.insertAdjacentElement("afterend", this.html_generieren());
+            this.datum_aktualisieren();
+        }
+
     }
 
 };
