@@ -6,7 +6,6 @@ class Eingabeformular {
         this._html = this._html_generieren();
     }
     
-    
     _formulardaten_holen(e) {
         return {
             titel: e.target.elements.titel.value,
@@ -26,7 +25,6 @@ class Eingabeformular {
     }
 
     _formulardaten_validieren(formulardaten) {
-
         let fehler = [];
         if (formulardaten.titel === "") {
             fehler.push('Titel');
@@ -38,7 +36,6 @@ class Eingabeformular {
             fehler.push("Datum");
         }
         return fehler;
-
     }
 
     _datum_aktualisieren() {
@@ -46,7 +43,6 @@ class Eingabeformular {
         if (datum_input !== null) {
             datum_input.valueAsDate = new Date();
         }
-
     }
 
     _absenden_event_hinzufuegen(eingabeformular) {
