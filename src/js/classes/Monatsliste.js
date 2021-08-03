@@ -47,6 +47,18 @@ class Monatsliste {
 
     }
 
+    _bilanzieren() {
+        let monatsbilanz = 0;
+        this._eintraege.forEach(eintrag => {
+            if (eintrag.typ() === "einnahme") {
+                monatsbilanz += eintrag.betrag();
+            } else {
+                monatsbilanz -= eintrag.betrag();
+            }
+        })
+        this._bilanz = monatsbilanz;
+    }
+
     _html_generieren() {
 
         let monatsliste = document.createElement("article");
@@ -68,7 +80,7 @@ class Monatsliste {
         } else {
             monatsbilanz.setAttribute("class", "monatsbilanz negativ");
         }
-        monatsbilanz.textContent = `${this._bilanz} €`;
+        monatsbilanz.textContent = `${(this._bilanz/ 100).toFixed(2).replace(/\./, ",")} €`;
         ueberschrift.insertAdjacentElement("beforeend", monatsbilanz);
 
         monatsliste.insertAdjacentElement("afterbegin", ueberschrift);
@@ -84,6 +96,7 @@ class Monatsliste {
 
     _aktualisieren() {
         this._eintraege_sortieren();
+        this._bilanzieren();
         this._html = this._html_generieren();
 
     }
