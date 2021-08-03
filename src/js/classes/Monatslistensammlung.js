@@ -1,14 +1,5 @@
 'use strict';
 
-/*
-
-    <!-- Monatslisten -->
-    <section id="monatslisten">
-    </section>
-
-*/
-
-
 class Monatslistensammlung {
 
     constructor() {
@@ -48,7 +39,7 @@ class Monatslistensammlung {
                     return 1;
                 } else {
                     return -1;
-                } 
+                }
             }
 
         });

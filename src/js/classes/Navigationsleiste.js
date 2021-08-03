@@ -1,6 +1,6 @@
 'use strict';
 
-class Navigationsleise {
+class Navigationsleiste {
 
     constructor() {
         this._html = this._html_generieren();

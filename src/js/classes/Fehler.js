@@ -1,7 +1,7 @@
 'use strict';
 
 class Fehler {
-    
+
     constructor(fehlertext, formular_fehler) {
         this._fehlertext = fehlertext;
         this._formular_fehler = formular_fehler;

@@ -9,7 +9,6 @@ class Eintrag {
         this._datum = datum;
         this._timestamp = Date.now();
         this._html = this._html_eintrag_generieren();
-
     }
 
     titel() {
@@ -37,7 +36,6 @@ class Eintrag {
     }
     
     _html_eintrag_generieren(eintrag) {
-
         let listenpunkt = document.createElement("li");
         this._typ === "einnahme" ? listenpunkt.setAttribute("class", "einnahme") : listenpunkt.setAttribute("class", "ausgabe");
         listenpunkt.setAttribute("data-timestamp", this._timestamp);
@@ -80,6 +78,5 @@ class Eintrag {
             haushaltsbuch.eintrag_entfernen(timestamp);
         })
     }
-
 
 }

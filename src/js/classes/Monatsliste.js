@@ -1,8 +1,5 @@
 'use strict';
 
-
-
-
 class Monatsliste {
 
     constructor(jahr, monat) {
@@ -80,7 +77,7 @@ class Monatsliste {
         } else {
             monatsbilanz.setAttribute("class", "monatsbilanz negativ");
         }
-        monatsbilanz.textContent = `${(this._bilanz/ 100).toFixed(2).replace(/\./, ",")} €`;
+        monatsbilanz.textContent = `${(this._bilanz / 100).toFixed(2).replace(/\./, ",")} €`;
         ueberschrift.insertAdjacentElement("beforeend", monatsbilanz);
 
         monatsliste.insertAdjacentElement("afterbegin", ueberschrift);

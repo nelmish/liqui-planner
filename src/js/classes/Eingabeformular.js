@@ -5,7 +5,7 @@ class Eingabeformular {
     constructor() {
         this._html = this._html_generieren();
     }
-    
+
     _formulardaten_holen(e) {
         return {
             titel: e.target.elements.titel.value,
@@ -57,7 +57,7 @@ class Eingabeformular {
                 if (fehlerbox !== null) {
                     fehlerbox.remove();
                 }
-                
+
                 e.target.reset();
                 this._datum_aktualisieren();
             } else {
@@ -104,8 +104,7 @@ class Eingabeformular {
     }
 
     anzeigen() {
-        //let navigationsleiste = document.querySelector("#navigationsleiste"); 
-        let navigationsleiste = document.querySelector("body"); 
+        let navigationsleiste = document.querySelector("body");
         if (navigationsleiste !== null) {
             navigationsleiste.insertAdjacentElement("afterbegin", this._html);
             this._datum_aktualisieren();

@@ -1,15 +1,15 @@
 'use strict';
 
 class Gesamtbilanz {
-    
+
     constructor() {
         this._einnahmen = 0;
         this._ausgaben = 0;
         this._bilanz = 0;
         this._html = this._html_generieren();
     }
-    
-    
+
+
     aktualisieren(eintraege) {
         this._einnahmen = 0;
         this._ausgaben = 0;
