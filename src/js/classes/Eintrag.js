@@ -3,7 +3,7 @@
  * @module classes/Eintrag
  */
 
-import haushaltsbuch from "./../main.js";
+import liqui_planner from "../liqui-planner.js";
 
 /**
  * Die Klasse "Eintrag" stellt alle Eigenschaften
@@ -133,7 +133,7 @@ export default class Eintrag {
     _eintrag_entfernen_event_hinzufuegen(listenpunkt) {
         listenpunkt.querySelector(".entfernen-button").addEventListener("click", e => {
             let timestamp = e.target.parentElement.getAttribute("data-timestamp");
-            haushaltsbuch.eintrag_entfernen(timestamp);
+            liqui_planner.eintrag_entfernen(timestamp);
         })
     }
 
