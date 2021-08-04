@@ -1,5 +1,22 @@
-export default class Gesamtbilanz {
+/**
+ * Das Modul "Gesamtbilanz" stellt die Klasse "Gesamtbilanz" zur Verfügung.
+ * @module classes/Gesamtbilanz
+ */
 
+/**
+ * Die Klasse "Gesamtbilanz" stellt alle Eigenschaften
+ * und Methoden der Gesamtbilanz (inkl. HTML) zur Verfügung.
+ */
+ export default class Gesamtbilanz {
+
+    /**
+     * Der Konstruktor setzt bei Instaziierung der Klasse "Gesamtbilanz" alle 
+     * u.g. Eigenschaften der Gesamtbilanz und generiert deren HTML.
+     * @prop {Number} _einnahmen - die Summe aller Einnahmen (in Cent, ganzzahlig)
+     * @prop {Number} _ausgaben - die Summe aller Ausgaben (in Cent, ganzzahlig)
+     * @prop {Number} _bilanz - die Differnz aus Einnahmen und Ausgaben (in Cent, ganzzahlig)
+     * @prop {Element} _html - das HTML der Gesamtbilanz
+     */
     constructor() {
         this._einnahmen = 0;
         this._ausgaben = 0;
@@ -7,7 +24,12 @@ export default class Gesamtbilanz {
         this._html = this._html_generieren();
     }
 
-
+    /**
+     * Diese Methode aktualisiert die Gesamtbilanz des Haushaltsbuch beim Hinzufügen oder Entfernen
+     * eines Eintrags anhand der Einträge des Haushaltsbuchs, generiert das HTML der Gesamtbilanz neu
+     * und zeigt die neu generierte Gesamtbilanz an.
+     * @param {Arrays} eintraege - Arrays mit allen Einträgen des Haushaltsbuchs
+     */
     aktualisieren(eintraege) {
         this._einnahmen = 0;
         this._ausgaben = 0;
@@ -31,15 +53,17 @@ export default class Gesamtbilanz {
         this.anzeigen();
     }
 
+    /**
+     * Diese private Methode generiert das HTML der Gesamtbilanz.
+     * @return {Element} - das Gesamtbilanz-Element mit all seinen Kindelementen
+     */
     _html_generieren() {
-
         let gesamtbilanz = document.createElement("aside");
         gesamtbilanz.setAttribute("id", "gesamtbilanz");
 
         let ueberschrift = document.createElement("h1");
         ueberschrift.textContent = "Gesamtbilanz";
         gesamtbilanz.insertAdjacentElement("afterbegin", ueberschrift);
-
 
         let einnahmen_zeile = document.createElement("div");
         einnahmen_zeile.setAttribute("class", "gesamtbilanz-zeile einnahmen");
@@ -75,13 +99,22 @@ export default class Gesamtbilanz {
         return gesamtbilanz;
     }
 
-    anzeigen() {
+    /**
+     * Diese private Methode entfernt eine bereits bestehende Gesamtbilanz, wenn vorhanden.
+     */
+    _entfernen() {
         let gesamtbilanz = document.querySelector("#gesamtbilanz");
         if (gesamtbilanz !== null) {
             gesamtbilanz.remove();
         }
-        document.querySelector("body").insertAdjacentElement("beforeend", this._html_generieren());
+    }
 
+    /**
+     * Diese Methode zeigt die generierte Gesamtbilanz an der richtigen Stelle in der UI an.
+     */
+    anzeigen() {
+        this._entfernen();
+        document.querySelector("body").insertAdjacentElement("beforeend", this._html);
     }
 
 }
