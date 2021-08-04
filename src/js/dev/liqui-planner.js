@@ -14,3 +14,4 @@ let liqui_planner = new Haushaltsbuch();
 liqui_planner.start();
 
 export default liqui_planner;
+//https://javascript-minifier.com/
